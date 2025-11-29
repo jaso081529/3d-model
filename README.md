@@ -1,350 +1,417 @@
-[中文阅读](README_zh_cn.md)
-[日本語で読む](README_ja_jp.md)
-
-<p align="center"> 
-  <img src="https://github.com/user-attachments/assets/efb402a1-0b09-41e0-a6cb-259d442e76aa">
-
-</p>
-
-<div align="center">
-  <a href=https://3d.hunyuan.tencent.com target="_blank"><img src=https://img.shields.io/badge/Official%20Site-333399.svg?logo=homepage height=22px></a>
-  <a href=https://huggingface.co/spaces/tencent/Hunyuan3D-2  target="_blank"><img src=https://img.shields.io/badge/%F0%9F%A4%97%20Demo-276cb4.svg height=22px></a>
-  <a href=https://huggingface.co/tencent/Hunyuan3D-2 target="_blank"><img src=https://img.shields.io/badge/%F0%9F%A4%97%20Models-d96902.svg height=22px></a>
-  <a href=https://3d-models.hunyuan.tencent.com/ target="_blank"><img src= https://img.shields.io/badge/Page-bb8a2e.svg?logo=github height=22px></a>
-  <a href=https://discord.gg/dNBrdrGGMa target="_blank"><img src= https://img.shields.io/badge/Discord-white.svg?logo=discord height=22px></a>
-  <a href=https://arxiv.org/abs/2501.12202 target="_blank"><img src=https://img.shields.io/badge/Report-b5212f.svg?logo=arxiv height=22px></a>
-  <a href=https://x.com/TencentHunyuan target="_blank"><img src=https://img.shields.io/badge/Hunyuan-black.svg?logo=x height=22px></a>
- <a href="#community-resources" target="_blank"><img src=https://img.shields.io/badge/Community-lavender.svg?logo=homeassistantcommunitystore height=22px></a>
-</div>
-
-[//]: # (  <a href=# target="_blank"><img src=https://img.shields.io/badge/Report-b5212f.svg?logo=arxiv height=22px></a>)
-
-[//]: # (  <a href=# target="_blank"><img src= https://img.shields.io/badge/Colab-8f2628.svg?logo=googlecolab height=22px></a>)
-
-[//]: # (  <a href="#"><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/v/mulankit?logo=pypi"  height=22px></a>)
-
-<br>
+[中文阅读](README_zh.md)
+# **HunyuanWorld-Mirror**
 
 <p align="center">
-“ Living out everyone’s imagination on creating and manipulating 3D assets.”
+  <img src="assets/teaser.jpg" width="95%" alt="HunyuanWorld-Mirror Teaser">
 </p>
 
-https://github.com/user-attachments/assets/a2cbc5b8-be22-49d7-b1c3-7aa2b20ba460
+<p align="center">
+<a href='https://3d-models.hunyuan.tencent.com/world/'><img src='https://img.shields.io/badge/Project-Page-green'></a>
+<a href='https://3d-models.hunyuan.tencent.com/world/worldMirror1_0/HYWorld_Mirror_Tech_Report.pdf'><img src='https://img.shields.io/badge/Technique-Report-red'></a>
+<a href='https://huggingface.co/tencent/HunyuanWorld-Mirror'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
+<a href='https://huggingface.co/spaces/tencent/HunyuanWorld-Mirror'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange'></a>
+<a href=https://discord.gg/dNBrdrGGMa target="_blank"><img src= https://img.shields.io/badge/Discord-white.svg?logo=discord height=22px></a>
+  <a href=https://x.com/TencentHunyuan target="_blank"><img src=https://img.shields.io/badge/Hunyuan-black.svg?logo=x height=22px></a>
+<p align="center">
 
 
-## 🔥 News
 
-- July 26, 2025: 🤗 We release the first open-source, simulation-capable, immersive 3D world generation model, [HunyuanWorld-1.0](https://github.com/Tencent-Hunyuan/HunyuanWorld-1.0)!
-- June 23, 2025: 📄 Release the system technical report of [Hunyuan3D 2.5](https://arxiv.org/abs/2506.16504).
-- June 13, 2025: 🤗 Release [Hunyuan3D-2.1](https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1), fully open-sourced with new PBR model, VAE encoder, and all training code. 
-- Apr 1, 2025: 🤗 Release turbo paint model [Hunyuan3D-Paint-v2-0-Turbo](https://huggingface.co/tencent/Hunyuan3D-2/tree/main/hunyuan3d-paint-v2-0-turbo), and multiview texture generation pipeline, try it [here](examples/fast_texture_gen_multiview.py)! Stay tuned for our new texture generation model [RomanTex](https://github.com/oakshy/RomanTex) and PBR material generation [MaterialMVP](https://github.com/ZebinHe/MaterialMVP/)! 
-- Mar 19, 2025: 🤗 Release turbo model [Hunyuan3D-2-Turbo](https://huggingface.co/tencent/Hunyuan3D-2/), [Hunyuan3D-2mini-Turbo](https://huggingface.co/tencent/Hunyuan3D-2mini/) and [FlashVDM](https://github.com/Tencent/FlashVDM).
-- Mar 18, 2025: 🤗 Release multiview shape model [Hunyuan3D-2mv](https://huggingface.co/tencent/Hunyuan3D-2mv) and 0.6B
-  shape model [Hunyuan3D-2mini](https://huggingface.co/tencent/Hunyuan3D-2mini).
-- Feb 14, 2025: 🛠️ Release texture enhancement module, please obtain high-definition textures
-  via [here](minimal_demo.py)!
-- Feb 3, 2025: 🐎
-  Release [Hunyuan3D-DiT-v2-0-Fast](https://huggingface.co/tencent/Hunyuan3D-2/tree/main/hunyuan3d-dit-v2-0-fast), our
-  guidance distillation model that could half the dit inference time, see [here](minimal_demo.py) for usage.
-- Jan 27, 2025: 🛠️ Release Blender addon for Hunyuan3D 2.0, Check it out [here](#blender-addon).
-- Jan 23, 2025: 💬 We thank community members for
-  creating [Windows installation tool](https://github.com/YanWenKun/Hunyuan3D-2-WinPortable), ComfyUI support
-  with [ComfyUI-Hunyuan3DWrapper](https://github.com/kijai/ComfyUI-Hunyuan3DWrapper)
-  and [ComfyUI-3D-Pack](https://github.com/MrForExample/ComfyUI-3D-Pack) and other
-  awesome [extensions](#community-resources).
-- Jan 21, 2025: 💬 Enjoy exciting 3D generation on our website [Hunyuan3D Studio](https://3d.hunyuan.tencent.com)!
-- Jan 21, 2025: 🤗 Release inference code and pretrained models
-  of [Hunyuan3D 2.0](https://huggingface.co/tencent/Hunyuan3D-2). Please give it a try
-  via [huggingface space](https://huggingface.co/spaces/tencent/Hunyuan3D-2) and
-  our [official site](https://3d.hunyuan.tencent.com)!
+HunyuanWorld-Mirror is a versatile feed-forward model for comprehensive 3D geometric prediction. It integrates diverse geometric priors (**camera poses**, **calibrated intrinsics**, **depth maps**) and simultaneously generates various 3D representations (**point clouds**, **multi-view depths**, **camera parameters**, **surface normals**, **3D Gaussians**) in a single forward pass.
+
+
+
+https://github.com/user-attachments/assets/146a9a25-5eb7-4400-aa09-5b58e1d10a5e
+
+
+
+
+## 🔥🔥🔥 Updates
+* **[Nov 7, 2025]**: 🚀🚀🚀 We release the training and evaluation code. See [Training Instructions](#🤖-training) and [Evaluation Instructions](#📊-evaluation).
+* **[Oct 22, 2025]**: We release the inference code and model weights. [Download Pretrained Model](https://huggingface.co/tencent/HunyuanWorld-Mirror).
 
 > Join our **[Wechat](#)** and **[Discord](https://discord.gg/dNBrdrGGMa)** group to discuss and find help from us.
 
 | Wechat Group                                     | Xiaohongshu                                           | X                                           | Discord                                           |
 |--------------------------------------------------|-------------------------------------------------------|---------------------------------------------|---------------------------------------------------|
-| <img src="assets/qrcode/wechat.png"  height=140> | <img src="assets/qrcode/xiaohongshu.png"  height=140> | <img src="assets/qrcode/x.png"  height=140> | <img src="assets/qrcode/discord.png"  height=140> |        
+| <img src="assets/qrcode/wechat.png"  height=140> | <img src="assets/qrcode/xiaohongshu.png"  height=140> | <img src="assets/qrcode/x.png"  height=140> | <img src="assets/qrcode/discord.png"  height=140> | 
 
 
+## Table of Contents
+
+- [Introduction](#☯️-hunyuanworld-mirror-introduction)
+  - [Architecture](#architecture)
+- [Installation](#🛠️-dependencies-and-installation)
+- [Quick Start](#🎮-quick-start)
+  - [Online Demo](#online-demo)
+  - [Local Demo](#local-demo)
+- [Download Pretrained Models](#📦-download-pretrained-models)
+- [Inference with Images & Priors](#🚀-inference-with-images--priors)
+  - [Example Code Snippet](#example-code-snippet)
+  - [Output Format](#output-format)
+  - [Inference with More Functions](#inference-with-more-functions)
+- [Post 3DGS Optimization (Optional)](#🎯-post-3dgs-optimization-optional)
+  - [Install Dependencies](#install-dependencies)
+  - [Optimization](#optimization)
+- [Performance](#🔮-performance)
+  - [Point Cloud Reconstruction](#point-cloud-reconstruction)
+  - [Novel View Synthesis](#novel-view-synthesis)
+  - [Boost of Geometric Priors](#boost-of-geometric-priors)
+- [Training](#🤖-training)
+  - [Training Data Preparation](#training-data-preparation)
+  - [Install Dependencies](#install-dependencies)
+  - [Training Commands](#training-commands)
+  - [Fine-tuning Commands](#fine-tuning-commands)
+- [Evaluation](#📊-evaluation)
+  - [Evaluation Data Preparation](#evaluation-data-preparation)
+  - [Install Dependencies](#install-dependencies)
+  - [Evaluation Commands](#evaluation-commands)
+    - [1. Point Map Reconstruction](#1-point-map-reconstruction)
+    - [2. Surface Normal Estimation](#2-surface-normal-estimation)
+    - [3. Novel View Synthesis](#3-novel-view-synthesis)
+    - [4. Depth Estimation](#4-depth-estimation)
+    - [5. Camera Pose Estimation](#5-camera-pose-estimation)
+- [Open-Source Plan](#📑-open-source-plan)
+- [BibTeX](#🔗-bibtex)
+- [Contact](#📧-contact)
+- [Acknowledgments](#acknowledgements)
 
 
-## **Abstract**
-
-We present Hunyuan3D 2.0, an advanced large-scale 3D synthesis system for generating high-resolution textured 3D assets.
-This system includes two foundation components: a large-scale shape generation model - Hunyuan3D-DiT, and a large-scale
-texture synthesis model - Hunyuan3D-Paint.
-The shape generative model, built on a scalable flow-based diffusion transformer, aims to create geometry that properly
-aligns with a given condition image, laying a solid foundation for downstream applications.
-The texture synthesis model, benefiting from strong geometric and diffusion priors, produces high-resolution and vibrant
-texture maps for either generated or hand-crafted meshes.
-Furthermore, we build Hunyuan3D-Studio - a versatile, user-friendly production platform that simplifies the re-creation
-process of 3D assets. It allows both professional and amateur users to manipulate or even animate their meshes
-efficiently.
-We systematically evaluate our models, showing that Hunyuan3D 2.0 outperforms previous state-of-the-art models,
-including the open-source models and closed-source models in geometry details, condition alignment, texture quality, and
-e.t.c.
-
-
-
-<p align="center">
-  <img src="assets/images/system.jpg">
-</p>
-
-## ☯️ **Hunyuan3D 2.0**
+## ☯️ **HunyuanWorld-Mirror Introduction**
 
 ### Architecture
+HunyuanWorld-Mirror consists of two key components:
 
-Hunyuan3D 2.0 features a two-stage generation pipeline, starting with the creation of a bare mesh, followed by the
-synthesis of a texture map for that mesh. This strategy is effective for decoupling the difficulties of shape and
-texture generation and also provides flexibility for texturing either generated or handcrafted meshes.
+**(1) Multi-Modal Prior Prompting**: A mechanism that embeds diverse prior modalities,
+including calibrated intrinsics, camera pose, and depth, into the feed-forward model. Given any subset of the available priors, we utilize several lightweight encoding layers to convert each modality into structured tokens.
+
+**(2) Universal Geometric Prediction**: A unified architecture capable of handling
+the full spectrum of 3D reconstruction tasks from camera and depth estimation to point map regression, surface normal estimation, and novel view synthesis. 
 
 <p align="left">
-  <img src="assets/images/arch.jpg">
+  <img src="assets/arch.png">
 </p>
 
-### Performance
 
-We have evaluated Hunyuan3D 2.0 with other open-source as well as close-source 3d-generation methods.
-The numerical results indicate that Hunyuan3D 2.0 surpasses all baselines in the quality of generated textured 3D assets
-and the condition following ability.
+## 🛠️ Dependencies and Installation
+We recommend using CUDA version 12.4 for the manual installation.
+```shell
+# 1. Clone the repository
+git clone https://github.com/Tencent-Hunyuan/HunyuanWorld-Mirror
+cd HunyuanWorld-Mirror
 
-| Model                   | CMMD(⬇)   | FID_CLIP(⬇) | FID(⬇)      | CLIP-score(⬆) |
-|-------------------------|-----------|-------------|-------------|---------------|
-| Top Open-source Model1  | 3.591     | 54.639      | 289.287     | 0.787         |
-| Top Close-source Model1 | 3.600     | 55.866      | 305.922     | 0.779         |
-| Top Close-source Model2 | 3.368     | 49.744      | 294.628     | 0.806         |
-| Top Close-source Model3 | 3.218     | 51.574      | 295.691     | 0.799         |
-| Hunyuan3D 2.0           | **3.193** | **49.165**  | **282.429** | **0.809**     |
+# 2. Create conda environment
+conda create -n hunyuanworld-mirror python=3.10 cmake=3.14.0 -y
+conda activate hunyuanworld-mirror
 
-Generation results of Hunyuan3D 2.0:
-<p align="left">
-  <img src="assets/images/e2e-1.gif"  height=250>
-  <img src="assets/images/e2e-2.gif"  height=250>
-</p>
+# 3. Install PyTorch and other dependencies using pip
+# For CUDA 12.4
+pip install torch==2.4.0 torchvision==0.19.0 --index-url https://download.pytorch.org/whl/cu124
 
-## 🎁 Models Zoo
-
-It takes 6 GB VRAM for shape generation and 16 GB for shape and texture generation in total.
-
-Hunyuan3D-2-1 Series
-
-| Model                | Description                   | Date       | Size | Huggingface                                                                             |
-|----------------------|-------------------------------|------------|------|-----------------------------------------------------------------------------------------|
-| Hunyuan3D-DiT-v2-1   | Mini Image to Shape Model     | 2025-06-13 | 3.0B | [Download](https://huggingface.co/tencent/Hunyuan3D-2.1/tree/main/hunyuan3d-dit-v2-1)   |
-| Hunyuan3D-Paint-v2-1 | Texture Generation Model    | 2025-06-13 | 1.3B | [Download](https://huggingface.co/tencent/Hunyuan3D-2.1/tree/main/hunyuan3d-paintpbr-v2-1) |
-
-Hunyuan3D-2mini Series
-
-| Model                       | Description                   | Date       | Size | Huggingface                                                                                      |
-|-----------------------------|-------------------------------|------------|------|--------------------------------------------------------------------------------------------------|
-| Hunyuan3D-DiT-v2-mini-Turbo | Step Distillation Version     | 2025-03-19 | 0.6B | [Download](https://huggingface.co/tencent/Hunyuan3D-2mini/tree/main/hunyuan3d-dit-v2-mini-turbo) |
-| Hunyuan3D-DiT-v2-mini-Fast  | Guidance Distillation Version | 2025-03-18 | 0.6B | [Download](https://huggingface.co/tencent/Hunyuan3D-2mini/tree/main/hunyuan3d-dit-v2-mini-fast)  |
-| Hunyuan3D-DiT-v2-mini       | Mini Image to Shape Model     | 2025-03-18 | 0.6B | [Download](https://huggingface.co/tencent/Hunyuan3D-2mini/tree/main/hunyuan3d-dit-v2-mini)       |
-
-
-Hunyuan3D-2mv Series
-
-| Model                     | Description                    | Date       | Size | Huggingface                                                                                  |
-|---------------------------|--------------------------------|------------|------|----------------------------------------------------------------------------------------------| 
-| Hunyuan3D-DiT-v2-mv-Turbo | Step Distillation Version      | 2025-03-19 | 1.1B | [Download](https://huggingface.co/tencent/Hunyuan3D-2mv/tree/main/hunyuan3d-dit-v2-mv-turbo) |
-| Hunyuan3D-DiT-v2-mv-Fast  | Guidance Distillation Version  | 2025-03-18 | 1.1B | [Download](https://huggingface.co/tencent/Hunyuan3D-2mv/tree/main/hunyuan3d-dit-v2-mv-fast)  |
-| Hunyuan3D-DiT-v2-mv       | Multiview Image to Shape Model | 2025-03-18 | 1.1B | [Download](https://huggingface.co/tencent/Hunyuan3D-2mv/tree/main/hunyuan3d-dit-v2-mv)       |
-
-Hunyuan3D-2 Series
-
-| Model                      | Description                 | Date       | Size | Huggingface                                                                               |
-|----------------------------|-----------------------------|------------|------|-------------------------------------------------------------------------------------------| 
-| Hunyuan3D-DiT-v2-0-Turbo   | Step Distillation Model     | 2025-03-19 | 1.1B | [Download](https://huggingface.co/tencent/Hunyuan3D-2/tree/main/hunyuan3d-dit-v2-0-turbo)   |
-| Hunyuan3D-DiT-v2-0-Fast    | Guidance Distillation Model | 2025-02-03 | 1.1B | [Download](https://huggingface.co/tencent/Hunyuan3D-2/tree/main/hunyuan3d-dit-v2-0-fast)    |
-| Hunyuan3D-DiT-v2-0         | Image to Shape Model        | 2025-01-21 | 1.1B | [Download](https://huggingface.co/tencent/Hunyuan3D-2/tree/main/hunyuan3d-dit-v2-0)         |
-| Hunyuan3D-Paint-v2-0       | Texture Generation Model    | 2025-01-21 | 1.3B | [Download](https://huggingface.co/tencent/Hunyuan3D-2/tree/main/hunyuan3d-paint-v2-0)       |
-| Hunyuan3D-Paint-v2-0-Turbo | Distillation Texure Model   | 2025-04-01 | 1.3B | [Download](https://huggingface.co/tencent/Hunyuan3D-2/tree/main/hunyuan3d-paint-v2-0-turbo) |
-| Hunyuan3D-Delight-v2-0     | Image Delight Model         | 2025-01-21 | 1.3B | [Download](https://huggingface.co/tencent/Hunyuan3D-2/tree/main/hunyuan3d-delight-v2-0)     | 
-
-## 🤗 Get Started with Hunyuan3D 2.0
-
-Hunyuan3D 2.0 supports Macos, Windows, Linux. You may follow the next steps to use Hunyuan3D 2.0 via:
-
-- [Code](#code-usage)
-- [Gradio App](#gradio-app)
-- [API Server](#api-server)
-- [Blender Addon](#blender-addon)
-- [Official Site](#official-site)
-
-### Install Requirements
-
-Please install Pytorch via the [official](https://pytorch.org/) site. Then install the other requirements via
-
-```bash
+# 4. Install pip dependencies
 pip install -r requirements.txt
-pip install -e .
-# for texture
-cd hy3dgen/texgen/custom_rasterizer
-python3 setup.py install
-cd ../../..
-cd hy3dgen/texgen/differentiable_renderer
-python3 setup.py install
+
+# 5. Install gsplat for 3D Gaussian Splatting rendering 
+# For CUDA 12.4
+pip install gsplat --index-url https://docs.gsplat.studio/whl/pt24cu124
 ```
 
-### Code Usage
+## 🎮 Quick Start
+We provide a Gradio demo for the HunyuanWorld-Mirror model for quick start.
 
-We designed a diffusers-like API to use our shape generation model - Hunyuan3D-DiT and texture synthesis model -
-Hunyuan3D-Paint.
+<p align="center">
+  <img src="assets/gradio_demo.gif" width="95%" alt="HunyuanWorld-Mirror Gradio Demo">
+</p>
 
-You could assess **Hunyuan3D-DiT** via:
+
+### Online Demo
+Try our online demo without installation: [🤗 Hugging Face Demo](https://huggingface.co/spaces/tencent/HunyuanWorld-Mirror)
+
+### Local Demo
+```shell
+# 1. Install requirements for gradio demo
+pip install -r requirements_demo.txt 
+# For Windows, please replace onnxruntime and gsplat with Windows wheels (comments in requirements_demo.txt)
+# 2. Launch gradio demo locally
+python app.py
+```
+
+## 📦 Download Pretrained Models
+To download the HunyuanWorld-Mirror model, first install the huggingface-cli:
+```
+python -m pip install "huggingface_hub[cli]"
+```
+Then download the model using the following commands:
+```
+huggingface-cli download tencent/HunyuanWorld-Mirror --local-dir ./ckpts
+```
+> **Note**: For inference, the model weights will be automatically downloaded from Hugging Face when running the inference scripts, so you can skip this manual download step if preferred.
+
+## 🚀 Inference with Images & Priors
+### Example Code Snippet
+```python
+from pathlib import Path
+import torch
+from src.models.models.worldmirror import WorldMirror
+from src.utils.inference_utils import extract_load_and_preprocess_images
+
+# --- Setup ---
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+model = WorldMirror.from_pretrained("tencent/HunyuanWorld-Mirror").to(device)
+
+# --- Load Data ---
+# Load a sequence of N images into a tensor
+inputs = {}
+inputs['img'] = extract_load_and_preprocess_images(
+    Path("path/to/your/data"), # video or directory containing images 
+    fps=1, # fps for extracing frames from video
+    target_size=518
+).to(device)  # [1,N,3,H,W], in [0,1]
+# -- Load Priors (Optional) --
+# Configure conditioning flags and prior paths
+cond_flags = [0, 0, 0]  # [camera_pose, depth, intrinsics]
+prior_data = {
+    'camera_poses': None,      # Camera pose tensor [1, N, 4, 4]
+    'depthmap': None,         # Depth map tensor [1, N, H, W]
+    'camera_intrs': None # Camera intrinsics tensor [1, N, 3, 3]
+}
+for idx, (key, data) in enumerate(prior_data.items()):
+    if data is not None:
+        cond_flags[idx] = 1
+        inputs[key] = data
+
+# --- Inference ---
+with torch.no_grad():
+    predictions = model(views=inputs, cond_flags=cond_flags)
+```
+
+### Output Format
 
 ```python
-from hy3dgen.shapegen import Hunyuan3DDiTFlowMatchingPipeline
+# Geometry outputs
+pts3d_preds, pts3d_conf = predictions["pts3d"][0], predictions["pts3d_conf"][0]       # 3D point cloud in world coordinate: [S, H, W, 3] and point confidence: [S, H, W]
+depth_preds, depth_conf = predictions["depth"][0], predictions["depth_conf"][0]       # Z-depth in camera frame: [S, H, W, 1] and depth confidence: [S, H, W]
+normal_preds, normal_conf = predictions["normals"][0], predictions["normals_conf"][0] # Surface normal in camera coordinate: [S, H, W, 3] and normal confidence: [S, H, W]
 
-pipeline = Hunyuan3DDiTFlowMatchingPipeline.from_pretrained('tencent/Hunyuan3D-2')
-mesh = pipeline(image='assets/demo.png')[0]
+# Camera outputs
+camera_poses = predictions["camera_poses"][0]  # Camera-to-world poses (OpenCV convention): [S, 4, 4]
+camera_intrs = predictions["camera_intrs"][0]  # Camera intrinsic matrices: [S, 3, 3]
+camera_params = predictions["camera_params"][0]   # Camera vector: [S, 9] (translation, quaternion rotation, fov_v, fov_u)
+
+# 3D Gaussian Splatting outputs
+splats = predictions["splats"]
+means = splats["means"][0].reshape(-1, 3)      # Gaussian means: [N, 3]
+opacities = splats["opacities"][0].reshape(-1) # Gaussian opacities: [N]
+scales = splats["scales"][0].reshape(-1, 3)    # Gaussian scales: [N, 3]
+quats = splats["quats"][0].reshape(-1, 4)      # Gaussian quaternions: [N, 4]
+sh = splats["sh"][0].reshape(-1, 1, 3)         # Gaussian spherical harmonics: [N, 1, 3]
 ```
 
-The output mesh is a [trimesh object](https://trimesh.org/trimesh.html), which you could save to glb/obj (or other
-format) file.
+Where:
+- `S` is the number of input views
+- `H, W` are the height and width of input images
+- `N` is the number of 3D Gaussians
 
-For **Hunyuan3D-Paint**, do the following:
+</details>
 
-```python
-from hy3dgen.texgen import Hunyuan3DPaintPipeline
-from hy3dgen.shapegen import Hunyuan3DDiTFlowMatchingPipeline
 
-# let's generate a mesh first
-pipeline = Hunyuan3DDiTFlowMatchingPipeline.from_pretrained('tencent/Hunyuan3D-2')
-mesh = pipeline(image='assets/demo.png')[0]
+### Inference with More Functions
 
-pipeline = Hunyuan3DPaintPipeline.from_pretrained('tencent/Hunyuan3D-2')
-mesh = pipeline(mesh, image='assets/demo.png')
+For advanced usage, see `infer.py` which provides additional features:
+- Save predictions: point clouds, depth maps, normals, camera parameters, and 3D Gaussian Splatting
+- Visualize outputs: depth maps, surface normals, and 3D point clouds
+- Render novel views using 3D Gaussians
+- Export 3D Gaussian Splatting results and camera parameters to COLMAP format
+
+## 🎯 Post 3DGS Optimization (Optional)
+
+### Install dependencies
+```shell
+cd submodules/gsplat/examples
+# install example requirements
+pip install -r requirements.txt
+# install pycolmap2 by rmbrualla
+git clone https://github.com/rmbrualla/pycolmap.git
+cd pycolmap
+# in pyproject.toml, rename name = "pycolmap" to name = "pycolmap2"
+vim pyproject.toml
+# rename folder pycolmap to pycolmap2
+mv pycolmap/ pycolmap2/
+python3 -m pip install -e .
+```
+### Optimization
+First, run infer.py with `--save_colmap` and `--save_gs` flags to generate COLMAP format initialization:
+```shell
+python infer.py --input_path /path/to/your/input --output_path /path/to/your/output --save_colmap --save_gs
+```
+The reconstruction result (camera parameters, 3D points, and 3D Gaussians) will be saved under `/path/to/your/output`, such as:
+``` 
+output/
+├── images/                 # Input images
+├── sparse/
+│   └── 0/
+│       ├── cameras.bin     # Camera intrinsics
+│       ├── images.bin      # Camera poses
+│       └── points3D.bin    # 3D points
+└── gaussians.ply           # 3D Gaussian Splatting initialization
+```
+Then, run the optimization script:
+```shell
+python submodules/gsplat/examples/simple_trainer_worldmirror.py default --data_factor 1 --data_dir /path/to/your/inference_output --result_dir /path/to/your/gs_optimization_output
 ```
 
-Please visit [examples](examples) folder for more advanced usage, such as **multiview image to 3D generation** and *
-*texture generation
-for handcrafted mesh**.
+## 🔮 **Performance**
+HunyuanWorld-Mirror achieves state-of-the-art performance across multiple 3D perception tasks, surpassing feed-forward 3D reconstruction methods. It demonstrates superior performance in **point cloud reconstruction, camera pose estimation, surface normal prediction, novel view rendering and depth estimation**. Incorporating 3D priors, such as **camera poses, depth, or intrinsics**, plays a crucial role in enhancing performance across these tasks. For point cloud reconstruction and novel view synthesis tasks, the performance is as follows:
 
-### Gradio App
+### Point cloud reconstruction
 
-You could also host a [Gradio](https://www.gradio.app/) App in your own computer via:
+| Method                        | 7-Scenes            |           | NRGBD             |           | DTU               |           |
+|------------------------------|---------------------|-----------|-------------------|-----------|-------------------|-----------|
+|                              | Acc. ⬇             | Comp. ⬇  | Acc. ⬇          | Comp. ⬇   | Acc. ⬇            | Comp. ⬇   |
+| Fast3R                       | 0.096               | 0.145     | 0.135             | 0.163     | 3.340             | 2.929     |
+| CUT3R                        | 0.094               | 0.101     | 0.104             | 0.079     | 4.742             | 3.400     |
+| VGGT                         | 0.046               | 0.057     | 0.051             | 0.066     | 1.338             | 1.896     |
+| π³                           | 0.048               | 0.072     | 0.026             | 0.028     | 1.198             | 1.849     |
+| **HunyuanWorld-Mirror**      | 0.043           | 0.049 | 0.041         | 0.045 | 1.017        | 1.780 |
+| **+ Intrinsics** | 0.042    | 0.048 | 0.041         | 0.045 | 0.977         | 1.762 |
+| **+ Depths**     | 0.038    | 0.039 | 0.032         | 0.031 | 0.831         | 1.022 |
+| **+ Camera Poses** | 0.023  | 0.036 | 0.029         | 0.032 | 0.990         | 1.847 |
+| **+ All Priors** | **0.018**    | **0.023** | **0.016**         | **0.014** | **0.735**         | **0.935** |
 
-Standard Version
+### Novel view synthesis
+| Method                          | Re10K |           |           | DL3DV    |           |           |
+|--------------------------------|-------------------------|-----------|-----------|-------------------|-----------|-----------|
+|                                | PSNR ⬆                 | SSIM ⬆   | LPIPS ⬇  | PSNR ⬆           | SSIM ⬆   | LPIPS ⬇  |
+| FLARE                          | 16.33                  | 0.574     | 0.410     | 15.35            | 0.516     | 0.591     |
+| AnySplat                       | 17.62                  | 0.616     | 0.242     | 18.31            | 0.569     | 0.258     |
+| **HunyuanWorld-Mirror**                | 20.62                  | 0.706     | 0.187     | 20.92            | 0.667     | 0.203     |
+| **+ Intrinsics**   | 22.03                  | 0.765     | 0.165     | 22.08            | 0.723     | 0.175     |
+| **+ Camera Poses** | 20.84                  | 0.713     | 0.182     | 21.18            | 0.674     | 0.197     |
+| **+ Intrinsics + Camera Poses**   | **22.30**              | **0.774** | **0.155** | **22.15**        | **0.726** | **0.174** |
+
+### Boost of Geometric Priors
+<p align="left">
+  <img src="assets/num-prior.png">
+</p>
+
+For the other tasks, refer to the [technique report](https://3d-models.hunyuan.tencent.com/world/worldMirror1_0/HYWorld_Mirror_Tech_Report.pdf) for detailed performance comparisons.
+
+## 🤖 Training
+
+### Training Data Preparation
+Please follow the [CUT3R data preparation instructions](https://github.com/CUT3R/CUT3R/blob/main/docs/preprocess.md) to download and prepare the training datasets. Currently, we provide an example dataset of Hypersim. 
+
+### Install Dependencies
+Refer to [Installation](#🛠️-dependencies-and-installation).
+
+### Training Commands
+Our model training consists of two stages. The quick start commands are:
 
 ```bash
-# Hunyuan3D-2mini
-python3 gradio_app.py --model_path tencent/Hunyuan3D-2mini --subfolder hunyuan3d-dit-v2-mini --texgen_model_path tencent/Hunyuan3D-2 --low_vram_mode
-# Hunyuan3D-2mv
-python3 gradio_app.py --model_path tencent/Hunyuan3D-2mv --subfolder hunyuan3d-dit-v2-mv --texgen_model_path tencent/Hunyuan3D-2 --low_vram_mode
-# Hunyuan3D-2
-python3 gradio_app.py --model_path tencent/Hunyuan3D-2 --subfolder hunyuan3d-dit-v2-0 --texgen_model_path tencent/Hunyuan3D-2 --low_vram_mode
+# stage1 for prior, pointmap, camera, depth, and normal
+python training/launch.py train=stage1.yaml 
+# stage2 for 3dgs
+python training/lanuch.py train=stage2.yaml
 ```
 
-Turbo Version
+**Notes:** 
+- This will automatically detect all available GPUs. To specify GPUs, use `CUDA_VISIBLE_DEVICES=<CUDA_ID>`
+- If you want to resume training from a checkpoint, you can set the `ckpt_path` flag to the path of the checkpoint, such as `python training/launch.py train=stage1.yaml ckpt_path=path/to/your/checkpoint.ckpt`.
+- You can comment some validation datasets in `data.validation_datasets` and adjust `wrapper.eval_modalities` in the configuration file to reduce the evaluation time.
 
+
+### Customized Training Commands
+We have provided a customized training config in `training/configs/train/custom.yaml`, where you can customize training parameters and model architecture. For example, you can disable certain prediction heads in the configuration file:
+```yaml
+wrapper:
+  model:
+    enable_cam: true      # Camera prediction head
+    enable_pts: true      # Point cloud prediction head
+    enable_depth: true    # Depth prediction head
+    enable_norm: false    # Normal prediction head
+    enable_gs: false      # Gaussian Splatting head
+```
+And run the following script:
 ```bash
-# Hunyuan3D-2mini
-python3 gradio_app.py --model_path tencent/Hunyuan3D-2mini --subfolder hunyuan3d-dit-v2-mini-turbo --texgen_model_path tencent/Hunyuan3D-2 --low_vram_mode --enable_flashvdm
-# Hunyuan3D-2mv
-python3 gradio_app.py --model_path tencent/Hunyuan3D-2mv --subfolder hunyuan3d-dit-v2-mv-turbo --texgen_model_path tencent/Hunyuan3D-2 --low_vram_mode --enable_flashvdm
-# Hunyuan3D-2
-python3 gradio_app.py --model_path tencent/Hunyuan3D-2 --subfolder hunyuan3d-dit-v2-0-turbo --texgen_model_path tencent/Hunyuan3D-2 --low_vram_mode --enable_flashvdm
+python training/lanuch.py train=custom.yaml
 ```
-
-### API Server
-
-You could launch an API server locally, which you could post web request for Image/Text to 3D, Texturing existing mesh,
-and e.t.c.
-
+If you want to train the model with all heads open in a single stage, you can run the following command:
 ```bash
-python api_server.py --host 0.0.0.0 --port 8080
+python training/launch.py train=all.yaml # adjust max_images_per_gpu in train/all.yaml to avoid OOM
 ```
 
-A demo post request for image to 3D without texture.
-
+### Evaluate Training Checkpoints
+After training, you can evaluate the trained checkpoints in point reconstruction by running the following script:
 ```bash
-img_b64_str=$(base64 -i assets/demo.png)
-curl -X POST "http://localhost:8080/generate" \
-     -H "Content-Type: application/json" \
-     -d '{
-           "image": "'"$img_b64_str"'",
-         }' \
-     -o test2.glb
+python training/launch.py --config-name=eval.yaml eval=pointmap.yaml wrapper.pretrained=path/to/your/checkpoint.ckpt
 ```
 
-### Blender Addon
+## 📊 Evaluation
+### Evaluation Data Preparation
+Please place all evaluation datasets in the `data` folder, or modify the configuration file at `configs/paths/default.yaml` accordingly. For data preprocessing:
 
-With an API server launched, you could also directly use Hunyuan3D 2.0 in your blender with
-our [Blender Addon](blender_addon.py). Please follow our tutorial to install and use.
+- **Point map reconstruction**: We follow [Spann3r's data processing instructions](https://github.com/HengyiWang/spann3r/blob/main/docs/data_preprocess.md) to prepare DTU, 7-Scene, and NRGBD.
 
-https://github.com/user-attachments/assets/8230bfb5-32b1-4e48-91f4-a977c54a4f3e
+- **Surface normal estimation**: We follow [DSINE](https://github.com/baegwangbin/DSINE) to prepare Ibims, NYU-v2, and Scannet-Normal.
 
-### Official Site
+- **Novel view synthesis**: For RealEstate10K, we follow [pixelSplat's detailed instructions](https://github.com/dcharatan/pixelsplat?tab=readme-ov-file#acquiring-datasets). For DL3DV, we follow [official DL3DV repo](https://github.com/DL3DV-10K/Dataset?tab=readme-ov-file#dataset-download) and download the 480P 10K subset.
 
-Don't forget to visit [Hunyuan3D](https://3d.hunyuan.tencent.com) for quick use, if you don't want to host yourself.
+- **Depth estimation**: We follow [MonST3R's data instructions](https://github.com/Junyi42/monst3r/blob/main/data/evaluation_script.md) to prepare NYU-v2, Sintel, and KITTI.
+
+
+- **Camera pose estimation**: We download RealEstate10K from [Huggingface](https://huggingface.co/datasets/mutou0308/RE10K).
+
+### Evaluation Commands
+#### 1. Point Map Reconstruction
+See the config in `configs/eval/pointmap.yaml`.
+```shell
+python training/launch.py --config-name eval.yaml eval=pointmap.yaml
+```
+#### 2. Surface Normal Estimation
+See the config in `configs/eval/normal.yaml`.
+```shell
+python training/launch.py --config-name eval.yaml eval=normal.yaml
+```
+#### 3. Novel View Synthesis
+See the config in `configs/eval/nvs.yaml`.
+```shell
+python training/launch.py --config-name eval.yaml eval=nvs.yaml
+```
+#### 4. Depth Estimation
+See the config in `configs/eval/depthmap.yaml`.
+```shell
+python training/launch.py --config-name eval.yaml eval=depthmap.yaml
+```
+#### 5. Camera Pose Estimation
+See the config in `configs/eval/pose.yaml`.
+```shell
+python training/launch.py --config-name eval.yaml eval=pose.yaml
+```
 
 ## 📑 Open-Source Plan
 
 - [x] Inference Code
 - [x] Model Checkpoints
 - [x] Technical Report
-- [x] ComfyUI
-- [x] Finetuning
-- [ ] TensorRT Version
+- [x] Gradio Demo
+- [x] Evaluation Code
+- [x] Training Code
+
 
 ## 🔗 BibTeX
 
-If you found this repository helpful, please cite our reports:
+If you find HunyuanWorld-Mirror useful for your research and applications, please cite using this BibTeX:
 
-```bibtex
-@misc{lai2025hunyuan3d25highfidelity3d,
-      title={Hunyuan3D 2.5: Towards High-Fidelity 3D Assets Generation with Ultimate Details}, 
-      author={Tencent Hunyuan3D Team},
-      year={2025},
-      eprint={2506.16504},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2506.16504}, 
-}
-
-@misc{hunyuan3d22025tencent,
-    title={Hunyuan3D 2.0: Scaling Diffusion Models for High Resolution Textured 3D Assets Generation},
-    author={Tencent Hunyuan3D Team},
-    year={2025},
-    eprint={2501.12202},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
-}
-
-@misc{yang2024hunyuan3d,
-    title={Hunyuan3D 1.0: A Unified Framework for Text-to-3D and Image-to-3D Generation},
-    author={Tencent Hunyuan3D Team},
-    year={2024},
-    eprint={2411.02293},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
+```BibTeX
+@article{liu2025worldmirror,
+  title={WorldMirror: Universal 3D World Reconstruction with Any-Prior Prompting},
+  author={Liu, Yifan and Min, Zhiyuan and Wang, Zhenwei and Wu, Junta and Wang, Tengfei and Yuan, Yixuan and Luo, Yawei and Guo, Chunchao},
+  journal={arXiv preprint arXiv:2510.10726},
+  year={2025}
 }
 ```
 
-## Community Resources
-
-Thanks for the contributions of community members, here we have these great extensions of Hunyuan3D 2.0:
-
-- [ComfyUI-3D-Pack](https://github.com/MrForExample/ComfyUI-3D-Pack)
-- [ComfyUI-Hunyuan3DWrapper](https://github.com/kijai/ComfyUI-Hunyuan3DWrapper)
-- [Hunyuan3D-2-for-windows](https://github.com/sdbds/Hunyuan3D-2-for-windows)
-- [📦 A bundle for running on Windows | 整合包](https://github.com/YanWenKun/Hunyuan3D-2-WinPortable)
-- [Hunyuan3D-2GP](https://github.com/deepbeepmeep/Hunyuan3D-2GP)
-- [Kaggle Notebook](https://github.com/darkon12/Hunyuan3D-2GP_Kaggle)
+## 📧 Contact
+Please send emails to tengfeiwang12@gmail.com if there is any question.
 
 ## Acknowledgements
-
-We would like to thank the contributors to
-the [Trellis](https://github.com/microsoft/TRELLIS),  [DINOv2](https://github.com/facebookresearch/dinov2), [Stable Diffusion](https://github.com/Stability-AI/stablediffusion), [FLUX](https://github.com/black-forest-labs/flux), [diffusers](https://github.com/huggingface/diffusers), [HuggingFace](https://huggingface.co), [CraftsMan3D](https://github.com/wyysf-98/CraftsMan3D),
-and [Michelangelo](https://github.com/NeuralCarver/Michelangelo/tree/main) repositories, for their open research and
-exploration.
-
-## Star History
-
-<a href="https://star-history.com/#Tencent/Hunyuan3D-2&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Tencent/Hunyuan3D-2&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Tencent/Hunyuan3D-2&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Tencent/Hunyuan3D-2&type=Date" />
- </picture>
-</a>
+We would like to thank [HunyuanWorld](https://github.com/Tencent-Hunyuan/HunyuanWorld-1.0). We also sincerely thank the authors and contributors of [VGGT](https://github.com/facebookresearch/vggt), [Fast3R](https://github.com/facebookresearch/fast3r), [CUT3R](https://github.com/CUT3R/CUT3R), and [DUSt3R](https://github.com/naver/dust3r) for their outstanding open-source work and pioneering research.

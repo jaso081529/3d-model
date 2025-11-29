@@ -1,40 +1,33 @@
-ninja
-pybind11
+# training dependencies
+lightning>=2.5.0
+hydra-core
+tensorboardX
+rootutils
+h5py
 
-diffusers
-einops
-opencv-python
-numpy
-torch
-transformers
-torchvision
-#taming-transformers-rom1504
-#ConfigArgParse
-#ipdb
-omegaconf
-
-#sentencepiece
-tqdm
-
-# Mesh Processing
+# inference dependencies
+torchmetrics
+pre-commit
+rich==13.3.5
+pytest
+numpy<2.0.0
 trimesh
-pymeshlab
-pygltflib
-xatlas
-#kornia
-#facexlib
-
-# Training
-accelerate
-#pytorch_lightning
-#scikit-learn
-#scikit-image
-
-# Demo only
+roma
+open3d==0.18.0
+einops
 gradio
-fastapi
-uvicorn
-rembg
-onnxruntime
-#gevent
-#geventhttpclient
+matplotlib
+tqdm
+opencv-python
+viser
+pillow_heif
+scipy
+huggingface-hub[torch]>=0.22
+ninja
+jaxtyping
+lpips 
+colorspacious
+moviepy==1.0.3
+plyfile
+pycolmap==3.10.0
+tyro
